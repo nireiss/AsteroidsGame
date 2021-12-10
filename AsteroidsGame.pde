@@ -27,7 +27,7 @@ public void draw(){
     asteroidList.get(i).show();
     float d = dist((float)a.getX(), (float)a.getY(), 
     (float)asteroidList.get(i).getX(), (float)asteroidList.get(i).getY());
-    if (d < 10)
+    if (d < 20)
       asteroidList.remove(i);
       fill(100, 0, 0);
       
