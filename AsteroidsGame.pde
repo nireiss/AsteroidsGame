@@ -1,4 +1,7 @@
 Spaceship a;
+
+ArrayList <Bullet> lasers = new ArrayList<Bullet>();
+
 ArrayList <Star> starList;
 ArrayList <Asteroid> asteroidList; 
 public void setup(){
@@ -20,6 +23,8 @@ public void setup(){
 
 public void draw(){
   background (0);
+     a.move();
+   a.show();
   for (int i = 0; i < starList.size(); i++)
     starList.get(i).show();
   for (int i = 0; i < asteroidList.size(); i++){
@@ -30,9 +35,16 @@ public void draw(){
     if (d < 20)
       asteroidList.remove(i);
       fill(100, 0, 0);
-      
-      
+
 }  
+
+    for(int j = 0; j < lasers.size(); j++){
+      lasers.get(j).move();
+      lasers.get(j).show();
+
+     
+
+}
   if (keyPressed){ // turn left
     if(key == 'a' || key == 'A'){
     a.turn(-10);
@@ -45,10 +57,15 @@ public void draw(){
     if(key == 'w' || key == 'W'){
      a.accelerate(0.2);
   }}
-   if (keyPressed){ // hyperspace
-    if(key == 'f' || key == 'F'){
+
+
+}
+public void keyPressed(){
+
+    if(key == 'f' || key == 'F')
      a.hyperspace();
-    }}
-   a.move();
-   a.show();
+    if(key == ' ' ){
+     lasers.add(new Bullet(a));
+    
+    }
 }
